@@ -1,0 +1,49 @@
+h2. Maven Mirah Compiler
+
+Plugin to allow to compile Mirah code with Maven.
+
+h3. Usage
+
+# Add the plugin to your pom.xml
+
+<pre>
+<build>
+...
+ <plugin>
+    <groupId>org.mirah.maven</groupId>
+    <artifactId>maven-mirah-plugin</artifactId>
+    <executions>
+      <execution>
+        <phase>compile</phase>
+        <goals><goal>compile</goal></goals>
+      </execution>
+    </executions>
+  </plugin>
+...
+</build>
+</pre>
+
+# Execute @mvn compile@
+
+h3. Configuration options
+
+Those are the options that can be modified for this plugin, this example shows the
+default ones so we just need to modify them into the plugin declaration:
+
+<pre>
+<plugin>
+...
+  <configuration>
+    <sourceDirectory>src/main/mirah</sourceDirectory>
+    <outputDirectory>target/classes</outputDirectory>
+    <verbose>false</verbose>
+...
+</plugin>
+</pre>
+
+h3. Generating java code
+
+If you want the plugin to generate java source files from mirah files instead
+of compiling your mirah code directly to bytecode, use the @generate-sources@
+phase instead. The resulting java source files will then be compiled by the
+normal maven compiler.
