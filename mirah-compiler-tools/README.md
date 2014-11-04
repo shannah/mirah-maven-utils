@@ -5,3 +5,19 @@ This library includes a Mirah compiler that supports two-way dependencies betwee
 ##License
 
 Apache 2.0
+
+##Usage
+
+Add the following to your `pom.xml` file:
+
+~~~
+<dependencies>
+    ...
+    <dependency>
+        <groupId>ca.weblite</groupId>
+        <artifactId>mirah-compiler-tools</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </dependency>
+    ...
+</dependencies>
+~~~
