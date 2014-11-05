@@ -4,9 +4,51 @@
     <groupId>ca.weblite</groupId>
     <artifactId>mirah-compiler-tools</artifactId>
     <packaging>jar</packaging>
-    <version>0.1.4-SNAPSHOT</version>
+    <version>0.1.4.1.0.0</version>
     <name>mirah-compiler-tools</name>
-    <url>http://maven.apache.org</url>
+    <url>https://github.com/shannah/mirah-maven-utils/tree/master/mirah-compiler-tools</url>
+    <description>Mirah compiler wrapper used by the Mirah Netbeans module</description>
+    <inceptionYear>2014</inceptionYear>
+    <organization>
+        <name>Web Lite Solutions Corp.</name>
+        <url>http://solutions.weblite.ca</url>
+    </organization>
+    <developers>
+        <developer>
+            <id>shannah</id>
+            <name>Steve Hannah</name>
+            <email>steve@weblite.ca</email>
+            <url>http://sjhannah.com</url>
+            <organization>Web Lite Solutions Corp.</organization>
+            <roles>
+                <role>developer</role>
+            </roles>
+            <timezone>-8</timezone>
+        </developer>
+    </developers>
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+    <issueManagement>
+        <system>GitHub</system>
+        <url>https://github.com/shannah/mirah-maven-utils/issues</url>
+    </issueManagement>
+    <scm>
+        <connection>scm:git:https://github.com/shannah/mirah-maven-utils.git</connection>
+        <developerConnection>scm:git:https://github.com/shannah/mirah-maven-utils.git</developerConnection>
+        <tag>HEAD</tag>
+        <url>https://github.com/shannah/mirah-maven-utils</url>
+    </scm>
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
     <build>
         <plugins>
             <plugin>
@@ -17,6 +59,57 @@
                     <source>1.7</source>
                     <target>1.7</target>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.sonatype.plugins</groupId>
+                <artifactId>nexus-staging-maven-plugin</artifactId>
+                <version>1.6.2</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <serverId>ossrh</serverId>
+                    <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                    <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>2.2.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.9.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>1.5</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
@@ -29,13 +122,13 @@
         </dependency>
         <dependency>
             <groupId>ca.weblite</groupId>
-            <artifactId>mirah</artifactId>
-            <version>0.1.4</version>
+            <artifactId>mirah-jar</artifactId>
+            <version>0.1.4.1.0.0</version>
         </dependency>
         <dependency>
             <groupId>ca.weblite</groupId>
-            <artifactId>mirahc</artifactId>
-            <version>0.1.4</version>
+            <artifactId>mirahc-jar</artifactId>
+            <version>0.1.4.1.0.0</version>
         </dependency>
         <dependency>
             <groupId>com.sun</groupId>
@@ -44,14 +137,13 @@
             <scope>system</scope>
             <systemPath>${java.home}/../lib/tools.jar</systemPath>
         </dependency>
-   
     </dependencies>
-    <repositories>
-        <!--other repositories if any-->
-        <repository>
-            <id>project.local</id>
-            <name>project</name>
-            <url>file:${project.basedir}/repo</url>
-        </repository>
-    </repositories>
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </reporting>
 </project>
