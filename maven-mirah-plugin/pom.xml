@@ -13,7 +13,7 @@
 
     <groupId>ca.weblite</groupId>
     <artifactId>maven-mirah-plugin</artifactId>
-    <version>1.0</version>
+    <version>1.0.1-SNAPSHOT</version>
     <packaging>maven-plugin</packaging>
 
     <name>maven-mirah-plugin</name>
@@ -85,7 +85,7 @@
         <dependency>
             <groupId>ca.weblite</groupId>
             <artifactId>mirah-compiler-tools</artifactId>
-            <version>0.1.4.1.0.0</version>
+            <version>0.1.4.1.0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
     <distributionManagement>
