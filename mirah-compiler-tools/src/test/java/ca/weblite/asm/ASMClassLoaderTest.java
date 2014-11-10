@@ -59,6 +59,27 @@ public class ASMClassLoaderTest {
         );
         
     }
-
+    /*
+    @Test
+    public void testFindJavaFXClass() throws Exception {
+        Type type = Type.getObjectType("javafx/fxml/Initializable");
+        ASMClassLoader instance = new ASMClassLoader(new Context(), null);
+        instance.setPath(System.getProperty("sun.boot.class.path"));
+        for ( Object key : System.getProperties().keySet()){
+            System.out.println(key+"="+System.getProperty(key+""));
+        }
+        System.out.println(instance.getPath());
+        ClassNode result = instance.findClass(type);
+        
+        assertTrue("Cannot find javafx.fxml.Initializable", result!=null);
+        assertEquals("Incorrect name for javafx.fxml.Initializable", "javafx/fxml/Initializable", result.name);
+        assertEquals(
+                "Incorrect superclass for Initializable", 
+                "java/lang/Object", 
+                result.superName
+        );
+        
+    }
+    */
     
 }

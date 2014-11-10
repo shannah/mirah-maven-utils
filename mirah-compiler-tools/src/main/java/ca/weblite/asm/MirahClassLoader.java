@@ -37,6 +37,7 @@ import java.util.logging.Logger;
 import java.util.regex.Pattern;
 import mirah.impl.MirahParser;
 import mirah.lang.ast.ClassDefinition;
+import mirah.lang.ast.Import;
 import mirah.lang.ast.InterfaceDeclaration;
 import mirah.lang.ast.Node;
 import mirah.lang.ast.NodeScanner;
@@ -217,8 +218,10 @@ public class MirahClassLoader extends BaseClassLoader{
                                                   typeref().name();
                                           ClassNode iClass = scopeStack.peek().
                                                   findStub(iname);
-                                          assert iClass!=null;
-                                          interfaces.set(i, iClass.name);
+                                          if ( iClass == null ){
+                                              throw new RuntimeException("Failed to find interface "+iname+" in class definition of "+className);
+                                          }
+                                          interfaces.add(iClass.name);
                                      }
                                  }
                                  
@@ -265,6 +268,22 @@ public class MirahClassLoader extends BaseClassLoader{
                             return super.exitClassDefinition(node, arg); 
                         }
 
+                        @Override
+                        public boolean enterImport(Import node, Object arg) {
+                            
+                            if ( scopeStack.isEmpty()){
+                                ClassFinder scope = new ClassFinder(
+                                        context.get(ClassLoader.class), 
+                                        null
+                                );
+                                scopeStack.push(scope);
+                            }
+                            scopeStack.peek().addImport(node.fullName().identifier());
+                            //System.out.println("Entering import: "+node.fullName().identifier());
+                            return super.enterImport(node, arg); 
+                        }
+
+                        
 
                     }, null);
 

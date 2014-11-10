@@ -22,6 +22,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 import java.util.jar.JarOutputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -99,7 +100,9 @@ public class MirahCompilerMojo extends AbstractMirahMojo {
     
     private void setupCompiler(WLMirahCompiler c){
         
+        
         c.setClassPath(StringUtils.join(classpathElements.iterator(), File.pathSeparator));
+        
         c.setMacroClassPath(StringUtils.join(classpathElements.iterator(), File.pathSeparator));
         
         c.setSourcePath(StringUtils.join(classpathElements.iterator(), File.pathSeparator));

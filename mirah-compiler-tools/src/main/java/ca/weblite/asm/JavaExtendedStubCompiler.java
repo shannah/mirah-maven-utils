@@ -673,7 +673,7 @@ public class JavaExtendedStubCompiler  {
 
                 String impl = ct.getImplementsClause().toString();
                 String[] unresolvedInterfaces = null;
-                if (!"".equals(impl)) {
+                if (impl != null && !"".equals(impl) ) {
                     interfaces = impl.split(",");
                     unresolvedInterfaces = new String[interfaces.length];
                     for ( int i=0; i<interfaces.length; i++){
@@ -683,6 +683,10 @@ public class JavaExtendedStubCompiler  {
                         iface = iface.trim();                        
                         ClassNode inode = scopeStack.peek().findStub(iface);
                         assert inode != null;
+                        if ( inode == null ){
+                            throw new RuntimeException("Could not find stub for interface "+iface);
+                        }
+                        System.out.println("interface "+iface);
                         interfaces[i] = inode.name;
                     }
                 }
