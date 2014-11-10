@@ -4,7 +4,7 @@
     <groupId>ca.weblite</groupId>
     <artifactId>mirah-ant-task</artifactId>
     <packaging>jar</packaging>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>1.0.1</version>
     <name>mirah-ant-task</name>
     <url>https://github.com/shannah/mirah-maven-utils/mirah-ant-task</url>
     <description>Ant Task for compiling Mirah source.  Supports two-way dependencies with Java.</description>
@@ -119,7 +119,7 @@
         <dependency>
             <groupId>ca.weblite</groupId>
             <artifactId>mirah-compiler-tools</artifactId>
-            <version>0.1.4.1.0.1-SNAPSHOT</version>
+            <version>0.1.4.1.0.1</version>
         </dependency>
         <dependency>
             <groupId>org.apache.ant</groupId>

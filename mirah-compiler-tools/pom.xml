@@ -4,7 +4,7 @@
     <groupId>ca.weblite</groupId>
     <artifactId>mirah-compiler-tools</artifactId>
     <packaging>jar</packaging>
-    <version>0.1.4.1.0.1-SNAPSHOT</version>
+    <version>0.1.4.1.0.1</version>
     <name>mirah-compiler-tools</name>
     <url>https://github.com/shannah/mirah-maven-utils/tree/master/mirah-compiler-tools</url>
     <description>Mirah compiler wrapper used by the Mirah Netbeans module</description>
