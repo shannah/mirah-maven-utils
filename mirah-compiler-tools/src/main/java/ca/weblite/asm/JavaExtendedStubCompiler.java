@@ -419,8 +419,15 @@ public class JavaExtendedStubCompiler  {
                                         "Could not find class for "+type
                                 );
                             }
+                            Type argType = Type.getObjectType(stub.name);
+                            argType = Type.getType(
+                                    TypeUtil.getArrayDescriptor(
+                                        argType.getInternalName(), 
+                                        dim
+                                )
+                            );
                             argTypes.add(
-                                    Type.getObjectType(stub.name)
+                                    argType
                             );
                         }
 
